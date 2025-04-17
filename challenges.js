@@ -43,6 +43,9 @@ addOne(-5) //=> -4
 -----------------------------------------------------------------------------*/
 // Your solution for 01-addOne here:
 
+function addOne(num) {
+  return num + 1
+}
 
 
 
@@ -74,6 +77,16 @@ addTwoNumbers('Hello', 5) //=> NaN
 
 
 
+function addTwoNumbers(num1, num2) {
+
+
+  if (typeof num1 !== 'number' || typeof num2 !== 'number') {
+    return NaN;
+  } else {
+    return num1 + num2
+  }
+
+}
 
 
 
@@ -100,6 +113,20 @@ sumNumbers([2, 10, -5]) //=> 7
 sumNumbers([]) //=> 0
 -----------------------------------------------------------------------------*/
 // Your solution for 03-sumNumbers here:
+
+function sumNumbers(arr) {
+  let sum = 0
+  if (arr.length === 0) {
+    return 0 
+  } 
+
+  arr.forEach((el) => {
+    sum += el
+  })
+
+  return sum
+  
+}
 
 
 
@@ -129,6 +156,19 @@ addList(1,50,1.23) //=> 52.23
 addList(7,-12) //=> -5
 -----------------------------------------------------------------------------*/
 // Your solution for 04-addList here:
+
+function addList(...args) {
+  
+  let sum = 0
+  sum += args
+  // args.forEach((arg) => {
+  //   sum += arg;
+  // })
+  return sum
+
+}
+
+// console.log(addList(4,6))
 
 
 
@@ -162,6 +202,14 @@ computeRemainder(10.5, 3) //=> 1.5
 -----------------------------------------------------------------------------*/
 // Your solution for 05-computeRemainder here:
 
+function getRemainder(num1, num2) {
+ 
+  return num1 % num2
+  
+}
+
+
+// console.log(getRemainder(10, 3))
 
 
 
@@ -176,11 +224,13 @@ Challenge: 06-range
 
 Difficulty: basic
 
+
 Prompt:
 
 - Write a function called range that accepts two integers as arguments and 
   returns an array of integers starting with the first argument up to one 
   less than the second argument.
+
 - The range function must be called with the first argument less than or equal 
   to the second argument; otherwise, return the string "First argument must be 
   less than second".
@@ -194,7 +244,15 @@ range(5,2) //=> "First argument must be less than second"
 -----------------------------------------------------------------------------*/
 // Your solution for 06-range here:
 
-
+function range(num1, num2) {
+  let arr
+  for (let i; i < num2; i++) {
+      num1++
+  }
+  arr.push(
+    
+  )
+}
 
 
 
@@ -246,8 +304,22 @@ removeEnds('SEI Rocks!') //=> "EI Rocks"
 removeEnds('a') //=> "" (empty string)
 -----------------------------------------------------------------------------*/
 // Your solution for 08-removeEnds here:
+function removeEnds(string) {
+  const emptyString = ''
+  
+  if (string.length < 3) {
+    return emptyString
+  } else {
+    const newString = string.split('')
+    newString.pop()
+    newString.shift()
+    const finalString = newString.join('')
+    // console.log(finalString)
+    return finalString
+  }
+}
 
-
+removeEnds('apple')
 
 
 
@@ -268,9 +340,9 @@ Prompt:
 - The returned object should have keys representing the character with its 
   value set to the number of times the character appears in the string argument.
 - Upper and lower case characters should be counted separately.
-- Space characters should be counted too.
+- Space characters should be counted too. 
 
-Examples:
+Examples: 
 
 charCount('hello') 
 //=> { h: 1, e: 1, l: 2, o: 1 }
@@ -330,6 +402,20 @@ formatWithPadding(1234, '*', 3) //=> "1234"
 // Your solution for 10-formatWithPadding here:
 
 
+// function formatWithPadding(integer, character, num) {
+//   const convertedInteger = integer.toString()
+//   if (convertedInteger.length < num) {
+//     const result = convertedInteger + (character*num)
+//     console.log(result)
+//     return result
+    
+//   }
+//   else if (convertedInteger.length >= num) {
+//     return integer.toString()
+//   }
+// }
+
+// formatWithPadding(123, '0', 5)
 
 
 
@@ -366,6 +452,30 @@ isPalindrome('') //=> true
 
 
 
+let string = 'salma'
+// console.log(string.length)
+
+for (let i = string.length; i < string.length; i--) {
+  console.log(i)
+}
+
+// console.log(string)
+
+// function isPalindrome(string) {
+
+
+//   if (string.length <= 1) {
+//     return true
+
+//   } else if(true ) {
+    
+//   }
+
+// }
+
+// isPalindrome()
+
+
 
 
 
@@ -376,28 +486,43 @@ Challenge: 12-hammingDistance
 
 Difficulty: Intermediate
 
-Prompt:
+  Prompt:
 
-In information theory, the hamming distance refers to the count of the 
-differences between two strings of equal length. It is used in computer science 
-for such things as implementing a "fuzzy search" capability.
+  In information theory, the hamming distance refers to the count of the 
+  differences between two strings of equal length. It is used in computer science 
+  for such things as implementing a "fuzzy search" capability.
 
-- Write a function named hammingDistance that accepts two arguments, which are 
-  both strings of equal length.
-- The function should return the count of the symbols (characters, numbers, 
-  etc.) at the same position within each string that are different.
-- If the strings are not of the same length, the function should return NaN.
+  - Write a function named hammingDistance that accepts two arguments, which are 
+    both strings of equal length.
+  - The function should return the count of the symbols (characters, numbers, 
+    etc.) at the same position within each string that are different.
+  - If the strings are not of the same length, the function should return NaN.
 
-Examples:
+  Examples:
 
-hammingDistance('abc', 'abc') //=> 0
-hammingDistance('a1c', 'a2c') //=> 1
-hammingDistance('!!!!', '****') //=> 4
-hammingDistance('abc', 'ab') //=> NaN
+  hammingDistance('abc', 'abc') //=> 0
+  hammingDistance('a1c', 'a2c') //=> 1
+  hammingDistance('!!!!', '****') //=> 4
+  hammingDistance('abc', 'ab') //=> NaN 
 -----------------------------------------------------------------------------*/
 // Your solution for 12-hammingDistance here:
 
-
+function hammingDistance(str1, str2) {
+  let count = 0
+  if (str1.length !== str2.length) {
+    return NaN
+  }
+  else {
+    for (let i = 0; i < str1.length; i++) {
+      if (str1[i] !== str2[i]) {
+        count++
+      } 
+    }
+  }
+  console.log(count)
+  return count
+}
+hammingDistance('abc', 'abd')
 
 
 
