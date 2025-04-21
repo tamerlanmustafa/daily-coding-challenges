@@ -15,7 +15,7 @@ sayHello() //=> Hello!
 
 
 function sayHello() {
-  return "Hello!!";
+  return "Hello!";
 }
 
 
@@ -157,18 +157,10 @@ addList(7,-12) //=> -5
 -----------------------------------------------------------------------------*/
 // Your solution for 04-addList here:
 
-function addList(...args) {
-  
-  let sum = 0
-  sum += args
-  // args.forEach((arg) => {
-  //   sum += arg;
-  // })
-  return sum
-
+function addList(...args) {  
+  return args.reduce((sum, curr) => sum + curr, 0)
 }
 
-// console.log(addList(4,6))
 
 
 
@@ -202,14 +194,12 @@ computeRemainder(10.5, 3) //=> 1.5
 -----------------------------------------------------------------------------*/
 // Your solution for 05-computeRemainder here:
 
-function getRemainder(num1, num2) {
- 
-  return num1 % num2
-  
+function computeRemainder(num1, num2) {
+  if (num2 === 0) return Infinity;
+  return num1 - Math.floor(num1 / num2) * num2;
 }
 
 
-// console.log(getRemainder(10, 3))
 
 
 
@@ -245,13 +235,15 @@ range(5,2) //=> "First argument must be less than second"
 // Your solution for 06-range here:
 
 function range(num1, num2) {
-  let arr
-  for (let i; i < num2; i++) {
-      num1++
+  let arr = []
+  if (num1 <= num2) {
+    for (let i = num1; i < num2; i++) {
+        arr.push(i)
+    }
+    return arr
+  } else {
+    return "First argument must be less than second"
   }
-  arr.push(
-    
-  )
 }
 
 
@@ -278,6 +270,18 @@ reverseUpcaseString("SEI Rocks!") //=> "!SKCOR IES"
 -----------------------------------------------------------------------------*/
 // Your solution for 07-reverseUpcaseString here:
 
+
+
+function reverseUpcaseString(str) {
+  
+  let newStr  = ""
+  for (let i = str.length-1; i >= 0; i--) {
+    newStr = newStr + str[i]
+  }
+  return newStr.toUpperCase()
+
+  
+}
 
 
 
@@ -314,12 +318,10 @@ function removeEnds(string) {
     newString.pop()
     newString.shift()
     const finalString = newString.join('')
-    // console.log(finalString)
     return finalString
   }
 }
 
-removeEnds('apple')
 
 
 
@@ -366,7 +368,10 @@ charCount('Today is fantastic!')
 -----------------------------------------------------------------------------*/
 // Your solution for 09-charCount here:
 
+function charCount(string) {
+  newStr = string.split('')
 
+}
 
 
 
@@ -406,7 +411,6 @@ formatWithPadding(1234, '*', 3) //=> "1234"
 //   const convertedInteger = integer.toString()
 //   if (convertedInteger.length < num) {
 //     const result = convertedInteger + (character*num)
-//     console.log(result)
 //     return result
     
 //   }
@@ -453,13 +457,10 @@ isPalindrome('') //=> true
 
 
 let string = 'salma'
-// console.log(string.length)
 
 for (let i = string.length; i < string.length; i--) {
-  console.log(i)
 }
 
-// console.log(string)
 
 // function isPalindrome(string) {
 
@@ -519,7 +520,6 @@ function hammingDistance(str1, str2) {
       } 
     }
   }
-  console.log(count)
   return count
 }
 hammingDistance('abc', 'abd')
