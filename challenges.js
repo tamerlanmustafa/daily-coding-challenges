@@ -598,7 +598,16 @@ fromPairs([ ['name', 'Sam"], ['age', 24], ['name', 'Sally'] ]) //=> { name: "Sal
 
 
 
+function fromPairs(arr) {
 
+  console.log(Object.fromEntries(arr))
+
+  let obj = {}
+  arr.forEach(eachArr => {
+    obj[eachArr[0]] = eachArr[1]
+  })
+  return obj
+}
 
 
 
