@@ -368,8 +368,22 @@ charCount('Today is fantastic!')
 -----------------------------------------------------------------------------*/
 // Your solution for 09-charCount here:
 
+
 function charCount(string) {
-  newStr = string.split('')
+  let Obj ={}
+
+  for (let char of string) {
+
+    if (Obj[char]) {
+      Obj[char]++
+    } else {
+      Obj[char] = 1
+    }
+  }
+  return Obj
+  
+
+  
 
 }
 
@@ -400,26 +414,27 @@ Prompt:
 
 Examples:
 
+formatWithPadding(1234, '*', 3) //=> "1234"
 formatWithPadding(123, '0', 5) //=> "00123"
 formatWithPadding(42, '*', 10) //=> "********42"
-formatWithPadding(1234, '*', 3) //=> "1234"
 -----------------------------------------------------------------------------*/
 // Your solution for 10-formatWithPadding here:
 
 
-// function formatWithPadding(integer, character, num) {
-//   const convertedInteger = integer.toString()
-//   if (convertedInteger.length < num) {
-//     const result = convertedInteger + (character*num)
-//     return result
-    
-//   }
-//   else if (convertedInteger.length >= num) {
-//     return integer.toString()
-//   }
-// }
+function formatWithPadding(integer, character, num) {
+  const convertedInteger = integer.toString();
+  const paddingLength = num - convertedInteger.length;
 
-// formatWithPadding(123, '0', 5)
+  if (convertedInteger.length < num) {
+    const padding = character.repeat(paddingLength);
+    const result = padding + convertedInteger;
+    return result;
+  } else {
+    return convertedInteger;
+  }
+}
+
+
 
 
 
@@ -456,25 +471,12 @@ isPalindrome('') //=> true
 
 
 
-let string = 'salma'
-
-for (let i = string.length; i < string.length; i--) {
+function isPalindrome(str) {
+  const cleanStr = str.toLowerCase().split(" ").join("");
+  const reversedStr = cleanStr.split('').reverse().join('');
+  
+  return cleanStr === reversedStr;
 }
-
-
-// function isPalindrome(string) {
-
-
-//   if (string.length <= 1) {
-//     return true
-
-//   } else if(true ) {
-    
-//   }
-
-// }
-
-// isPalindrome()
 
 
 
