@@ -524,7 +524,6 @@ function hammingDistance(str1, str2) {
   }
   return count
 }
-hammingDistance('abc', 'abd')
 
 
 
@@ -556,6 +555,17 @@ mumble('!A 2') //=> '!-AA-   -2222'
 -----------------------------------------------------------------------------*/
 // Your solution for 13-mumble here:
 
+
+function mumble(str) {
+  let parts = [];
+  
+  for (let i = 0; i < str.length; i++) {
+    parts.push(str[i].repeat(i + 1));
+  }
+
+
+  return parts.join('-');
+}
 
 
 
