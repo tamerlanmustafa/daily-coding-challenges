@@ -600,7 +600,6 @@ fromPairs([ ['name', 'Sam"], ['age', 24], ['name', 'Sally'] ]) //=> { name: "Sal
 
 function fromPairs(arr) {
 
-  console.log(Object.fromEntries(arr))
 
   let obj = {}
   arr.forEach(eachArr => {
@@ -642,9 +641,97 @@ mergeObjects({a: 1, b: 2, c: 3}, {d: 4}, {b: 22, d: 44})
 // Your solution for 15-mergeObjects here:
 
 
+function mergeObjects(obj1, ...otherObjs) {
+  otherObjs.forEach(obj => {
+    Object.assign(obj1, obj);
+  });
+  return obj1;
+}
+// Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+// You may assume that each input would have exactly one solution, and you may not use the same element twice.
+// You can return the answer in any order.
+// Example 1:
+// Input: nums = [2,7,11,15], target = 9
+// Output: [0,1]
+// Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
+// Example 2:
+// Input: nums = [3,2,4], target = 6
+// Output: [1,2]
+// Example 3:
+// Input: nums = [3,3], target = 6
+// Output: [0,1]
+ 
+
+
+const twoSum = (nums, target) => {
+  const pair = new Map()
+
+  for (i = 0; i < nums.length; i++) {
+    const num = nums[i]
+
+    const complement = target - num
+
+    if (pair.has(complement)) {
+      return [i, pair.get(complement)]
+    }
+
+    pair.set(num, i)
+  }
+ 
+
+};
+
+// console.log(twoSum([2,7,11,15], 9))
 
 
 
+
+/*
+Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique element appears only once. The relative order of the elements should be kept the same. Then return the number of unique elements in nums.
+
+Consider the number of unique elements of nums to be k, to get accepted, you need to do the following things:
+
+Change the array nums such that the first k elements of nums contain the unique elements in the order they were present in nums initially. The remaining elements of nums are not important as well as the size of nums.
+Return k.
+Custom Judge:
+
+The judge will test your solution with the following code:
+
+int[] nums = [...]; // Input array
+int[] expectedNums = [...]; // The expected answer with correct length
+
+int k = removeDuplicates(nums); // Calls your implementation
+
+assert k == expectedNums.length;
+for (int i = 0; i < k; i++) {
+    assert nums[i] == expectedNums[i];
+}
+If all assertions pass, then your solution will be accepted. 
+
+Example 1:
+
+Input: nums = [1,1,2]
+Output: 2, nums = [1,2,_]
+Explanation: Your function should return k = 2, with the first two elements of nums being 1 and 2 respectively.
+It does not matter what you leave beyond the returned k (hence they are underscores).
+*/
+
+
+function removeDuplicates(nums) {
+  let i = 1
+
+  for (let j = 1; i < nums.length; j++) {
+    if (nums[j] !== nums[i - 1]) {
+      nums[i] = nums[j]
+      i++
+    }
+  }
+
+  return i
+}
+
+
+removeDuplicates([0,0,1,1,1,2,2,3,3,4])
 
 
 
@@ -1148,7 +1235,6 @@ addChecker( [10, 15, 16, 22], 32 ) // => true
 addChecker( [10, 15, 16, 22], 19 ) // => false
 -----------------------------------------------------------------------------*/
 // Your solution for 29-addChecker here:
-
 
 
 
